@@ -15,7 +15,7 @@ repos:
     rev: 5.9.3
     hooks:
     - id: isort
-      args: ["--profile", "black", "--filter-files", "."]
+      args: ["--profile", "black", "--filter-files"]
 
 -   repo: https://github.com/asottile/pyupgrade
     rev: v2.29.0
