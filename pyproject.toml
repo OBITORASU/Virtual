@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "Virtual"
+version = "0.1.0"
+description = "Virtual uses hand tracking to emulate common input devices like the mouse, keyboard and volume control systems."
+authors = ["Souhit Dey <suprememightyzeus@gmail.com>"]
+license = "GNU General Public License v3.0"
+
+[tool.poetry.dependencies]
+python = ">=3.7,<3.11"
+opencv-python = "^4.5.4"
+
+[tool.poetry.dev-dependencies]
+black = "^21.9b0"
+isort = "^5.9.3"
+mypy = "^0.910"
+pytest = "^6.2.5"
+pre-commit = "^2.15.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

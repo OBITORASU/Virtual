@@ -1,0 +1,2 @@
+numpy==1.21.3; python_version >= "3.7" and python_version < "3.11"
+opencv-python==4.5.4.58; python_version >= "3.6"
