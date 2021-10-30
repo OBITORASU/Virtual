@@ -2,7 +2,7 @@
 name = "Virtual"
 version = "0.1.0"
 description = "Virtual uses hand tracking to emulate common input devices like the mouse, keyboard and volume control systems."
-authors = ["Souhit Dey <suprememightyzeus@gmail.com>"]
+authors = ["Souhit Dey <obitogod@protonmail.com>"]
 license = "GNU General Public License v3.0"
 
 [tool.poetry.dependencies]
