@@ -57,24 +57,24 @@ class detector:
         return image
 
     def findLandmarks(self, image: nt.NDArray, draw: bool = True) -> list:
-        """Finds landmarks of the first hand in the supplied image and returns a list of the landmarks found.
+        """Finds landmarks of the hands in the supplied image and returns a list of the landmarks found.
 
         Args:
             image (nt.NDArray): An NDArray of an image in which the hand landmarks are to be found.
             draw (bool, optional): Decides whether to enable or disable drawing landmarks on the image. Defaults to True.
 
         Returns:
-            list: A list of integers contaning the landmarks of the first hand detected in the image.
+            list: A list of integers contaning the landmarks of the hands detected in the image.
         """
         landmarkList = []
         if self.result.multi_hand_landmarks:
-            myHand = self.result.multi_hand_landmarks[0]
-            for id, landmark in enumerate(myHand.landmark):
-                h, w, c = image.shape
-                cx, cy = int(landmark.x * w), int(landmark.y * h)
-                landmarkList.append([id, cx, cy])
-                if draw:
-                    cv2.circle(image, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
+            for handLandmarks in self.result.multi_hand_landmarks:
+                for id, landmark in enumerate(handLandmarks.landmark):
+                    h, w, c = image.shape
+                    cx, cy = int(landmark.x * w), int(landmark.y * h)
+                    landmarkList.append([id, cx, cy])
+                    if draw:
+                        cv2.circle(image, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
         return landmarkList
 
 
