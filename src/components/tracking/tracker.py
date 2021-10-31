@@ -61,12 +61,11 @@ while True:
         3,
     )
     cv2.imshow("Image", image)
-    k=cv2.waitKey(1)
+    k = cv2.waitKey(1)
     if k == 27:
-        print('ESC')
+        print("ESC")
         cv2.destroyAllWindows()
-        break   
-    
+        break
 
 
 cap.release()
