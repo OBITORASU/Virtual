@@ -4,13 +4,13 @@ import alsaaudio
 m = alsaaudio.Mixer(device="pulse")
 
 
-def changeVolLinux(volume: int) -> None:
+def changeVolLinux(vol: int) -> None:
     """Change the volume of the system.
 
     Args:
-        volume (int): Value to which the volume will be set in terms of percentage.
+        vol (int): Value to which the volume will be set in terms of percentage.
     """
-    m.setvolume(volume)
+    m.setvolume(vol)
 
 
 def getVolRangeLinux() -> list:

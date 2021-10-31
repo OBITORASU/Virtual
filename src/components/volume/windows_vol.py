@@ -12,7 +12,7 @@ def changeVolWindows(vol: float) -> None:
     """Change the volume of the system.
 
     Args:
-        volume (float): Value to which the volume will be set.
+        volume (float): Value to which the volume will be set in terms of supported range.
     """
     volume.SetMasterVolumeLevel(vol, None)
 
@@ -30,6 +30,6 @@ def getCurrentVolWindows() -> float:
     """Get the current volume of the system.
 
     Returns:
-        float: A float value corresponding to the current volume of the system.
+        float: Value corresponding to the current volume of the system.
     """
     return volume.GetMasterVolumeLevel()
