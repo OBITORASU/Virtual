@@ -5,7 +5,7 @@ m = alsaaudio.Mixer(device="pulse")
 
 
 def changeVolLinux(volume: int) -> None:
-    """Change the volume of the system
+    """Change the volume of the system.
 
     Args:
         volume (int): Value to which the volume will be set in terms of percentage.
