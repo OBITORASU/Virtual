@@ -37,8 +37,8 @@ class detector:
         return image
 
 
-pTime = 0
-cTime = 0
+pTime = 0.0
+cTime = 0.0
 cap = cv2.VideoCapture(0)
 detect = detector()
 detect.trackHands()
@@ -47,7 +47,7 @@ while True:
     success, image = cap.read()
     image = cv2.flip(image, 1)
     image = detect.drawHands(image)
-    cTime = int(time.time())
+    cTime = time.time()
     fps = 1 / (cTime - pTime)
     pTime = cTime
 
