@@ -62,10 +62,7 @@ platformdirs = ">=2"
 regex = ">=2020.1.8"
 tomli = ">=0.2.6,<2.0.0"
 typed-ast = {version = ">=1.4.2", markers = "python_version < \"3.8\""}
-typing-extensions = [
-    {version = ">=3.10.0.0", markers = "python_version < \"3.10\""},
-    {version = "!=3.10.0.1", markers = "python_version >= \"3.10\""},
-]
+typing-extensions = ">=3.10.0.0"
 
 [package.extras]
 colorama = ["colorama (>=0.4.3)"]
@@ -560,8 +557,8 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 
 [metadata]
 lock-version = "1.1"
-python-versions = ">=3.7,<3.11"
-content-hash = "665c03e3848171f0855f6b74ac3d7b0fe2800c51de55fa59cf6fa423cc968972"
+python-versions = ">=3.7,<3.10"
+content-hash = "4e0833ab6b9abc72115eff05913f5787d3caf54a4f7c0719664764a45b580387"
 
 [metadata.files]
 absl-py = [
