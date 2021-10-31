@@ -36,6 +36,18 @@ class detector:
 
         return image
 
+    def findLandmark(self, img, handNo=0, draw=True):
+        landMarkList = []
+        if self.results.multi_hand_landmarks:
+            myHand = self.results.multi_hand_landmarks[handNo]
+            for id, lm in enumerate(myHand.landmark):
+                h, w, c = img.shape
+                cx, cy = int(lm.x * w), int(lm.y * h)
+                landMarkList.append([id, cx, cy])
+                if draw:
+                    cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
+        return landMarkList
+
 
 pTime = 0.0
 cTime = 0.0
