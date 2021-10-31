@@ -47,6 +47,8 @@ class detector:
                 if draw:
                     cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
         return landMarkList
+
+
 pTime = 0.0
 cTime = 0.0
 cap = cv2.VideoCapture(0)
@@ -60,7 +62,7 @@ while True:
     cTime = time.time()
     fps = 1 / (cTime - pTime)
     pTime = cTime
-        
+
     cv2.putText(
         image,
         str(int(fps)),
