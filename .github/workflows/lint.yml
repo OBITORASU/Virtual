@@ -16,5 +16,15 @@ jobs:
           python-version: 3.8
       - name: Install Black
         run: pip install black
-      - name: Run black --check --diff .
+      - name: Run black
         run: black --check --diff .
+
+      - name: Install ISort
+        run: pip install isort
+      - name: Run isort
+        run: isort --profile black --diff .
+
+      - name: Install MyPy
+        run: pip install mypy
+      - name: Run mypy
+        run: mypy --ignore-missing-imports --exclude src/components/volume/windows_vol.py .
