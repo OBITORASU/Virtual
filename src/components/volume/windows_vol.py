@@ -22,20 +22,18 @@ class winVol:
         self.winVolume.SetMasterVolumeLevel(vol, None)
         self.volume = vol
 
+    def getVolRangeWindows(self) -> tuple:
+        """Get the supported volume range of the system.
 
-def getVolRangeWindows(self) -> tuple:
-    """Get the supported volume range of the system.
+        Returns:
+            tuple: A tuple of three float values corresponding to the volume range of the system.
+        """
+        return self.winVolume.GetVolumeRange()
 
-    Returns:
-        tuple: A tuple of three float values corresponding to the volume range of the system.
-    """
-    return self.winVolume.GetVolumeRange()
+    def getCurrentVolWindows(self) -> float:
+        """Get the current volume of the system.
 
-
-def getCurrentVolWindows(self) -> float:
-    """Get the current volume of the system.
-
-    Returns:
-        float: Value corresponding to the current volume of the system.
-    """
-    return self.volume
+        Returns:
+            float: Value corresponding to the current volume of the system.
+        """
+        return self.volume
