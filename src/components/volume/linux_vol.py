@@ -1,8 +1,5 @@
 import alsaaudio
 
-# Setup the Mixer object
-m = alsaaudio.Mixer(device="pulse")
-
 
 class linuxVol:
     def __init__(self) -> None:
