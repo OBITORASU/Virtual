@@ -25,8 +25,9 @@ def getCurrentVolMac() -> int:
     Returns:
         int: Value corresponding to the current output volume of the system in terms of percentage.
     """
-    currentVolume = check_output(
-        ["osascript -e 'output volume of (get volume settings)'"], shell=True
+    currentVolume = int(
+        check_output(
+            ["osascript -e 'output volume of (get volume settings)'"], shell=True
+        ).decode("utf-8")
     )
-    currentVolumeStr = currentVolume.decode("utf-8")
-    return int(currentVolumeStr)
+    return currentVolume
