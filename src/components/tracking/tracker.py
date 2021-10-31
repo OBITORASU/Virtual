@@ -64,9 +64,6 @@ while True:
     k = cv2.waitKey(1)
     if k == 27:
         print("ESC")
+        cap.release()
         cv2.destroyAllWindows()
         break
-
-
-cap.release()
-cv2.destroyAllWindows()
