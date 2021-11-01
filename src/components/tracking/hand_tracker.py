@@ -70,3 +70,20 @@ class detector:
                     cx, cy = int(landmark.x * w), int(landmark.y * h)
                     landmarkList.append([id, cx, cy])
         return landmarkList
+
+    def checkHandedness(self, image: nt.NDArray) -> list:
+        """Takes an image stream in the form of an NDArray and returns the handedness (left or right) for the hands found in the image stream.
+
+        Args:
+            image (nt.NDArray): An NDArray of an image in which the handedness is to be found.
+
+        Returns:
+            list: A list of strings contaning the handedness of the hands detected in the image based on index.
+        """
+        handedness = []
+        if self.result.multi_handedness:
+            for idx, classification in enumerate(self.result.multi_handedness):
+                handedness.append(
+                    self.result.multi_handedness[idx].classification[0].label
+                )
+        return handedness

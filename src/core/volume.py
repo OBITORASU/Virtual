@@ -17,8 +17,9 @@ def volController() -> None:
         image = cv2.flip(image, 1)
         image = detect.drawHands(image)
         landmarks = detect.findLandmarks(image)
+        handedness = detect.checkHandedness(image)
         if len(landmarks) != 0:
-            image = volume_tracker.controlVolume(landmarks, image)
+            image = volume_tracker.controlVolume(handedness, landmarks, image)
         currentTime = time.time()
         fps = 1 / (currentTime - previousTime)
         previousTime = currentTime
