@@ -2,7 +2,6 @@ import math
 import time
 
 import cv2
-import numpy as np
 
 from src.components.helpers.volume_manager import manageVol
 from src.components.tracking import tracker
