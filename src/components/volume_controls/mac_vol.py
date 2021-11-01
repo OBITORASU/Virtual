@@ -5,7 +5,8 @@ class macVol:
     def __init__(self) -> None:
         self.volume = int(
             check_output(
-                ["osascript -e 'output volume of (get volume settings)'"], shell=True
+                ["osascript -e 'output volume of (get volume settings)'"],
+                shell=True,
             ).decode("utf-8")
         )
 
@@ -15,7 +16,10 @@ class macVol:
         Args:
             vol (int): Value to which the volume will be set in terms of percentage.
         """
-        call(["osascript -e 'set volume output volume {}'".format(vol)], shell=True)
+        call(
+            ["osascript -e 'set volume output volume {}'".format(vol)],
+            shell=True,
+        )
         self.volume = vol
 
     def getVolRangeMac(self) -> tuple:
