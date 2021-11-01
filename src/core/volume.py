@@ -7,7 +7,8 @@ from src.components.helpers.volume_manager import manageVol
 from src.components.tracking import tracker
 
 
-def volController():
+def volController() -> None:
+    """Controller function which starts reading a stream of images from the camera. It then computes all the landmarks of the hands present in the image stream.Finally it uses the offset distance between the tip of the index finger and the thumb to control the volume of the system."""
     previousTime = 0.0
     currentTime = 0.0
     capture = cv2.VideoCapture(0)

@@ -45,3 +45,4 @@ def manageVol(length: float) -> None:
             controllerMac.changeVolMac(volume)
     except:
         logging.error("Host Operating System is not supported.")
+        exit(1)
