@@ -12,8 +12,8 @@ class detector:
         imageMode: bool = False,
         maxHands: int = 2,
         complexity: int = 1,
-        detectionConf: float = 0.7,
-        trackingConf: float = 0.7,
+        detectionConf: float = 0.8,
+        trackingConf: float = 0.8,
     ) -> None:
         """Creates a mediapipe.solutions.hands.Hands object with the passed arguments.
 
@@ -21,8 +21,8 @@ class detector:
             imageMode (bool, optional): Decides if the image is static or a dynamic video stream. Defaults to False (Video Stream).
             maxHands (int, optional): Value corresponding to the maximum hands to be detected. Defaults to 2.
             complexity (int, optional): Value to set the complexity the hand landmarking model can be 0 or 1. Defaults to 1.
-            detectionConf (float, optional): Value to set the maximum confidence value for the model to consider when determining successfull detection. Range [0.0, 1.0]Defaults to 0.7.
-            trackingConf (float, optional): Value to set the maximum confidence value for the model to consider when determining successfull tracking. Range [0.0, 0.1] Defaults to 0.7.
+            detectionConf (float, optional): Value to set the maximum confidence value for the model to consider when determining successfull detection. Range [0.0, 1.0]Defaults to 0.8.
+            trackingConf (float, optional): Value to set the maximum confidence value for the model to consider when determining successfull tracking. Range [0.0, 0.1] Defaults to 0.8.
         """
         self.mpHands = mediapipe.solutions.hands
         self.hands = self.mpHands.Hands(
