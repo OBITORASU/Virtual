@@ -34,9 +34,3 @@ repos:
     hooks:
     -   id: flake8
         args: ["--ignore", "E203, E266, E501, W503, F403, F401", "--max-complexity", "18"]
-
-- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-  rev: v2.2.0
-  hooks:
-  - id: pretty-format-toml
-    args: [--autofix, --indent, '4']
