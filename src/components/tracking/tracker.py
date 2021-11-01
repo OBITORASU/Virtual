@@ -74,7 +74,7 @@ class detector:
                     cx, cy = int(landmark.x * w), int(landmark.y * h)
                     landmarkList.append([id, cx, cy])
                     if draw:
-                        cv2.circle(image, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
+                        cv2.circle(image, (cx, cy), 5, (255, 0, 255), cv2.FILLED)
         return landmarkList
 
 
@@ -97,11 +97,11 @@ while True:
     cv2.putText(
         image,
         str(int(fps)),
-        (10, 50),
-        cv2.FONT_HERSHEY_COMPLEX_SMALL,
-        3,
-        (255, 0, 255),
-        3,
+        (5, 15),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.5,
+        (0, 128, 0),
+        1,
     )
     cv2.imshow("Image", image)
     k = cv2.waitKey(1)
