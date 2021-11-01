@@ -56,12 +56,11 @@ class detector:
 
         return image
 
-    def findLandmarks(self, image: nt.NDArray, draw: bool = True) -> list:
+    def findLandmarks(self, image: nt.NDArray) -> list:
         """Finds landmarks of the hands in the supplied image and returns a list of the landmarks found.
 
         Args:
             image (nt.NDArray): An NDArray of an image in which the hand landmarks are to be found.
-            draw (bool, optional): Decides whether to enable or disable drawing landmarks on the image. Defaults to True.
 
         Returns:
             list: A list of integers contaning the landmarks of the hands detected in the image.
@@ -73,40 +72,4 @@ class detector:
                     h, w, c = image.shape
                     cx, cy = int(landmark.x * w), int(landmark.y * h)
                     landmarkList.append([id, cx, cy])
-                    if draw:
-                        cv2.circle(image, (cx, cy), 5, (255, 0, 255), cv2.FILLED)
         return landmarkList
-
-
-pTime = 0.0
-cTime = 0.0
-cap = cv2.VideoCapture(0)
-detect = detector()
-detect.trackHands()
-while True:
-    success, image = cap.read()
-    image = cv2.flip(image, 1)
-    image = detect.drawHands(image)
-    landmarks = detect.findLandmarks(image)
-    if len(landmarks) != 0:
-        print(landmarks)
-    cTime = time.time()
-    fps = 1 / (cTime - pTime)
-    pTime = cTime
-
-    cv2.putText(
-        image,
-        str(int(fps)),
-        (5, 15),
-        cv2.FONT_HERSHEY_SIMPLEX,
-        0.5,
-        (0, 128, 0),
-        1,
-    )
-    cv2.imshow("Image", image)
-    k = cv2.waitKey(1)
-    if k == 27:
-        print("ESC")
-        cap.release()
-        cv2.destroyAllWindows()
-        break

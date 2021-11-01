@@ -15,13 +15,13 @@ class linuxVol:
         self.m.setvolume(vol)
         self.volume = vol
 
-    def getVolRangeLinux(self) -> list:
+    def getVolRangeLinux(self) -> tuple:
         """Get the supported volume range of the system.
 
         Returns:
-            list: A list of two  integer values corresponding to the volume range of the system.
+            tuple: A tuple of two  integer values corresponding to the volume range of the system in percentage.
         """
-        return self.m.getrange()
+        return (0, 100)
 
     def getCurrentVolLinux(self) -> int:
         """Get the current volume of the system in terms of percentages.
