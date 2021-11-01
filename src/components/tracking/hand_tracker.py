@@ -37,7 +37,7 @@ class detector:
             draw (bool, optional): Decides whether to enable or disable drawing on the image. Defaults to True.
 
         Returns:
-            NDArray: An NDarray of an image with landmarks drawn for the detected hands.
+            NDArray: An NDarray of the image stream. Optionally supports landmarks drawn for the detected hands if draw is set to True.
         """
 
         imgRGB = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
