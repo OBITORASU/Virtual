@@ -1,6 +1,3 @@
-# Hand Tracking
-import time
-
 import cv2
 import mediapipe
 import numpy.typing as nt

@@ -2,7 +2,7 @@ import logging
 
 import numpy as np
 
-from src.components.helpers.os_detection import *
+from src.components.helpers.os_detection import LINUX, MAC, WINDOWS
 
 
 def manageVol(length: float) -> None:
@@ -43,6 +43,6 @@ def manageVol(length: float) -> None:
             )
             volume = int(np.interp(length, [20, 160], [minVol, maxVol]))
             controllerMac.changeVolMac(volume)
-    except:
-        logging.error("Host Operating System is not supported.")
+    except Exception as e:
+        logging.error(e)
         exit(1)
