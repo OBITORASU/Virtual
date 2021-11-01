@@ -1,3 +1,4 @@
+import logging
 import time
 
 import cv2
@@ -7,9 +8,13 @@ from src.components.tracking import hand_tracker, volume_tracker
 
 def volController() -> None:
     """Controller function which starts reading a stream of images from the camera. It then computes all the landmarks of the hands present in the image stream.Finally it uses the offset distance between the tip of the index finger and the thumb to control the volume of the system."""
+    logging.basicConfig(format="%(levelname)s: %(message)s")
     previousTime = 0.0
     currentTime = 0.0
     capture = cv2.VideoCapture(0)
+    if capture is None or not capture.isOpened():
+        logging.error("Webcam could not be initialized.")
+        exit(1)
     detect = hand_tracker.detector()
     detect.trackHands()
     while True:
