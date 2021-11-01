@@ -15,8 +15,8 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Install black and isort and mypy
-        run: pip install black isort mypy
+      - name: Install black and isort and mypy flake8
+        run: pip install black isort mypy flake8
 
       - name: Run black
         run: black --check --diff .
@@ -26,3 +26,6 @@ jobs:
 
       - name: Run mypy
         run: mypy --ignore-missing-imports --exclude src/components/volume/windows_vol.py .
+      
+      - name: Run flake8
+        run: flake8 --ignore E203, E266, E501, W503, F403, F401 --max-complexity 18 .
