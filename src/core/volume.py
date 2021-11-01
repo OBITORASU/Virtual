@@ -12,8 +12,8 @@ class volume:
         pass
 
     def volController(self):
-        pTime = 0.0
-        cTime = 0.0
+        previousTime = 0.0
+        currentTime = 0.0
         capture = cv2.VideoCapture(0)
         detect = tracker.detector()
         detect.trackHands()
@@ -35,9 +35,9 @@ class volume:
                     cv2.circle(image, (cx, cy), 5, (0, 0, 255), cv2.FILLED)
                 manageVol(length)
 
-            cTime = time.time()
-            fps = 1 / (cTime - pTime)
-            pTime = cTime
+            currentTime = time.time()
+            fps = 1 / (currentTime - previousTime)
+            previousTime = currentTime
 
             cv2.putText(
                 image,
