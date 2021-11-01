@@ -43,6 +43,6 @@ def manageVol(length: float) -> None:
             )
             volume = int(np.interp(length, [20, 160], [minVol, maxVol]))
             controllerMac.changeVolMac(volume)
-    except Exception as e:
-        logging.error(e)
+    except Exception:
+        logging.error(Exception)
         exit(1)
