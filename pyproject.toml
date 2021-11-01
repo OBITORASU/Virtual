@@ -40,6 +40,11 @@ exclude = '''
 
 [tool.isort]
 profile = "black"
+line_length = 79
+
+[tool.mypy]
+ignore_missing_imports = true
+exclude = '/windows_vol\.py$'
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
