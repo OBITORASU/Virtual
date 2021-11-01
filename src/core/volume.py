@@ -4,7 +4,7 @@ import time
 import cv2
 import numpy as np
 
-from src.components.helpers.os_detection import *
+from src.components.helpers.volume_manager import manageVol
 from src.components.tracking import tracker
 
 
@@ -34,17 +34,7 @@ class volume:
                 length = math.hypot(x2 - x1, y2 - y1)
                 if length < 25:
                     cv2.circle(image, (cx, cy), 5, (0, 0, 255), cv2.FILLED)
-
-                if LINUX:
-                    from src.components.volume_controls import linux_vol
-
-                    controller = linux_vol.linuxVol()
-                    minVol, maxVol = (
-                        controller.getVolRangeLinux()[0],
-                        controller.getVolRangeLinux()[1],
-                    )
-                    volume = int(np.interp(length, [20, 160], [minVol, maxVol]))
-                    controller.changeVolLinux(volume)
+                manageVol(length)
 
             cTime = time.time()
             fps = 1 / (cTime - pTime)
