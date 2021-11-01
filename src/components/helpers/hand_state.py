@@ -1,7 +1,7 @@
 import logging
 
 
-def openOrClose(handedness: str, landmarks: list) -> list:
+def openOrClosed(handedness: str, landmarks: list) -> list:
     """Calculates which fingers are open and closed based on landmarks and handedness.
 
     Args:

@@ -3,7 +3,7 @@ import math
 import cv2
 import numpy.typing as nt
 
-from src.components.helpers.open_or_close import openOrClose
+from src.components.helpers.hand_state import openOrClosed
 from src.components.helpers.volume_manager import manageVol
 
 
@@ -26,7 +26,7 @@ def controlVolume(
 
     cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
     length = math.hypot(x2 - x1, y2 - y1)
-    fingerState = openOrClose(handedness[0], landmarks)
+    fingerState = openOrClosed(handedness[0], landmarks)
     if fingerState == [1, 1, 1, 1, 1]:
         if draw:
             cv2.line(image, (x1, y1), (x2, y2), (0, 128, 0), 2)
