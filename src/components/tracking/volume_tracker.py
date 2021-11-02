@@ -27,7 +27,7 @@ def controlVolume(
     cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
     length = math.hypot(x2 - x1, y2 - y1)
     fingerState = openOrClosed(handedness[0], landmarks)
-    if fingerState == [1, 1, 1, 1, 1]:
+    if fingerState[2] and fingerState[3] and fingerState[4] == 1:
         if draw:
             cv2.line(image, (x1, y1), (x2, y2), (0, 128, 0), 2)
             cv2.circle(image, (cx, cy), 5, (0, 255, 0), cv2.FILLED)
