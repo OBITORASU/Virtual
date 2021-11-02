@@ -29,7 +29,7 @@ def volController(
     while True:
         success, image = capture.read()
         image = cv2.flip(image, 1)
-        image = detect.drawHands(image, draw=False)
+        image = detect.drawHands(image)
         landmarks = detect.findLandmarks(image)
         handedness = detect.checkHandedness(image)
         if len(landmarks) != 0:
