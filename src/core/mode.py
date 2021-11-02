@@ -9,6 +9,7 @@ from src.core.volume import volController
 
 
 def modeSelection():
+    """A selector functions which sets up and starts the camera and waits for certain hand gestures to call for specific modes like the Volume Mode, Keyboard Mode and Mouse Mode."""
     logging.basicConfig(format="%(levelname)s: %(message)s")
     capture = cv2.VideoCapture(0)
     if capture is None or not capture.isOpened():
@@ -19,7 +20,7 @@ def modeSelection():
 
     detect = hand_tracker.detector()
     detect.trackHands()
-    mode = "Selector"
+    mode = "Selector Mode"
     while True:
         success, image = capture.read()
         image = cv2.flip(image, 1)
@@ -29,18 +30,13 @@ def modeSelection():
         if len(landmarks) != 0:
             fingerState = openOrClosed(handedness[0], landmarks)
             if fingerState == [0, 1, 0, 0, 0]:
-                # write vol function here
-                mode = "volume mode"
                 print("call vol function")
                 volController(handedness, landmarks, capture)
 
             elif fingerState == [0, 1, 1, 0, 0]:
-                # write mouse function
-                mode = "mouse mode"
                 print("call mouse function")
+
             elif fingerState == [0, 1, 1, 1, 0]:
-                # write keyboard function
-                mode = "keyboard mode"
                 print("call keyboard function")
             else:
                 print("None")
@@ -51,7 +47,7 @@ def modeSelection():
 
         cv2.putText(
             image,
-            "{} {}".format(mode, fps),
+            "{} {}".format(mode, str(int(fps))),
             (5, 15),
             cv2.FONT_HERSHEY_SIMPLEX,
             0.5,
@@ -65,7 +61,7 @@ def modeSelection():
             print("ESC")
             capture.release()
             cv2.destroyAllWindows()
-            break
+            exit(0)
 
 
 modeSelection()
