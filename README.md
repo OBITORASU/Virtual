@@ -3,4 +3,4 @@ Virtual aims to automate common input devices like mouse, keyboard and volume co
 
 Packages used:
 Mediapipe (For Hand Tracking)
-OpenCV
+OpenCV (For Computer Vision)
