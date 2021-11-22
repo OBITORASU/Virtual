@@ -2,14 +2,18 @@ import logging
 
 
 def openOrClosed(handedness: str, landmarks: list) -> list:
-    """Calculates which fingers are open and closed based on landmarks and handedness.
+    """Calculates which fingers are open and closed based on landmarks and
+    handedness.
 
     Args:
-        handedness (str): A single value "Left" or "Right" to denote the handedness of the hand.
-        landmarks (list): Values corresponding to the hand landmarks detected in the image stream.
+        handedness (str): A single value "Left" or "Right" to denote the
+        handedness of the hand.
+        landmarks (list): Values corresponding to the hand landmarks detected
+        in the image stream.
 
     Returns:
-        list: A list of integers namely 0s and 1s denoting which fingers are open and which ones are closed based on index.
+        list: A list of integers namely 0s and 1s denoting which fingers
+        are open and which ones are closed based on index.
     """
     logging.basicConfig(format="%(levelname)s: %(message)s")
     tipLandmark = [4, 8, 12, 16, 20]

@@ -14,7 +14,8 @@ class macVol:
         """Change the volume of the system.
 
         Args:
-            vol (int): Value to which the volume will be set in terms of percentage.
+            vol (int): Value to which the volume will be set in terms of
+            percentage.
         """
         call(
             ["osascript -e 'set volume output volume {}'".format(vol)],
@@ -26,7 +27,8 @@ class macVol:
         """Get the supported volume range of the system in terms of percentage.
 
         Returns:
-            tuple: A hardcoded value representing the system volume range in terms of percentage.
+            tuple: A hardcoded value representing the system volume range in
+            terms of percentage.
         """
         return (0, 100)
 
@@ -34,6 +36,7 @@ class macVol:
         """[summary]
 
         Returns:
-            int: Value corresponding to the current output volume of the system in terms of percentage.
+            int: Value corresponding to the current output volume of the
+            system in terms of percentage.
         """
         return self.volume

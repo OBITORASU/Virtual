@@ -17,7 +17,8 @@ class winVol:
         """Change the volume of the system.
 
         Args:
-            volume (float): Value to which the volume will be set in terms of supported range.
+            volume (float): Value to which the volume will be set in terms of
+            supported range.
         """
         self.winVolume.SetMasterVolumeLevel(vol, None)
         self.volume = vol
@@ -26,7 +27,8 @@ class winVol:
         """Get the supported volume range of the system.
 
         Returns:
-            tuple: A tuple of three float values corresponding to the volume range of the system.
+            tuple: A tuple of three float values corresponding to the volume
+            range of the system.
         """
         return self.winVolume.GetVolumeRange()
 
