@@ -10,7 +10,8 @@ class linuxVol:
         """Change the volume of the system.
 
         Args:
-            vol (int): Value to which the volume will be set in terms of percentage.
+            vol (int): Value to which the volume will be set in terms of
+            percentage.
         """
         self.m.setvolume(vol)
         self.volume = vol
@@ -19,13 +20,15 @@ class linuxVol:
         """Get the supported volume range of the system.
 
         Returns:
-            tuple: A tuple of two  integer values corresponding to the volume range of the system in percentage.
+            tuple: A tuple of two  integer values corresponding to the volume
+            range of the system in percentage.
         """
         return (0, 100)
 
     def getCurrentVolLinux(self) -> int:
         """Get the current volume of the system in terms of percentages.
         Returns:
-            int: Value corresponding to the current output volume of the system in terms of percentage.
+            int: Value corresponding to the current output volume of the
+            system in terms of percentage.
         """
         return self.volume

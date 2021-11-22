@@ -6,10 +6,14 @@ from src.components.helpers.os_detection import LINUX, MAC, WINDOWS
 
 
 def manageVol(length: float) -> None:
-    """Detects the host os and calls upon respective volume control modules to manipulate system volume.
+    """Detects the host os and calls upon respective volume control modules to
+    manipulate system volume.
 
     Args:
-        length (float): Value corresponding to the length between two hand landmarks. This length is used to control system volume and this length is generated dynamically using mediapipe hand landmark recognition.
+        length (float): Value corresponding to the length between two hand
+        landmarks. This length is used to control system volume and this
+        length is generated dynamically using mediapipe hand landmark
+        recognition.
     """
     logging.basicConfig(format="%(levelname)s: %(message)s")
     try:

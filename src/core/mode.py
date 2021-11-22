@@ -9,7 +9,9 @@ from src.core.volume import volController
 
 
 def modeSelection():
-    """A selector functions which sets up and starts the camera and waits for certain hand gestures to call for specific modes like the Volume Mode, Keyboard Mode and Mouse Mode."""
+    """A selector functions which sets up and starts the camera and waits for
+    certain hand gestures to call for specific modes like the Volume Mode,
+    Keyboard Mode and Mouse Mode."""
     logging.basicConfig(format="%(levelname)s: %(message)s")
     capture = cv2.VideoCapture(0)
     if capture is None or not capture.isOpened():

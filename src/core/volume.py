@@ -10,15 +10,21 @@ from src.components.tracking import hand_tracker, volume_tracker
 def volController(
     handedness: list, landmarks: list, capture: cv2.VideoCapture
 ) -> int:
-    """Controller function which starts reading a stream of images from the camera. It then computes all the landmarks of the hands present in the image stream.Finally it uses the offset distance between the tip of the index finger and the thumb to control the volume of the system.
+    """Controller function which starts reading a stream of images from the
+    camera. It then computes all the landmarks of the hands present in the
+    image stream. Finally it uses the offset distance between the tip of the
+    index finger and the thumb to control the volume of the system.
 
     Args:
-        handedness (list): A list of strings contaning the handedness of the hands detected in the image based on index.
-        landmarks (list): A list of integers contaning the landmarks of the hands detected in the image.
+        handedness (list): A list of strings contaning the handedness of the
+        hands detected in the image based on index.
+        landmarks (list): A list of integers contaning the landmarks of the
+        hands detected in the image.
         capture (cv2.VideoCapture): Capture initiated by cv2.VideoCapture().
 
     Returns:
-        int: Returns 0 in case of success to the calling function or exists with return code 0 if terminated with ESC.
+        int: Returns 0 in case of success to the calling function or exists
+        with return code 0 if terminated with ESC.
     """
     logging.basicConfig(format="%(levelname)s: %(message)s")
     previousTime = 0.0
