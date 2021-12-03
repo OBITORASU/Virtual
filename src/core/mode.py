@@ -5,6 +5,7 @@ import cv2
 
 from src.components.helpers.hand_state import openOrClosed
 from src.components.tracking import hand_tracker
+from src.core.mouse import mouseController
 from src.core.volume import volController
 
 
@@ -32,11 +33,10 @@ def modeSelection():
         if len(landmarks) != 0:
             fingerState = openOrClosed(handedness[0], landmarks)
             if fingerState == [0, 1, 0, 0, 0]:
-                print("call vol function")
                 volController(handedness, landmarks, capture)
 
             elif fingerState == [0, 1, 1, 0, 0]:
-                print("call mouse function")
+                mouseController(handedness, landmarks, capture)
 
             elif fingerState == [0, 1, 1, 1, 0]:
                 print("call keyboard function")
