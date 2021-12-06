@@ -4,8 +4,9 @@ from tkinter import Tk
 
 import cv2
 import numpy as np
-from pynput.mouse import Controller
+from pynput.mouse import Button, Controller
 
+from src.components.helpers.distance import findDistance
 from src.components.helpers.hand_state import openOrClosed
 from src.components.tracking import hand_tracker
 
@@ -32,6 +33,11 @@ def mouseController(
     logging.basicConfig(format="%(levelname)s: %(message)s")
     previousTime = 0.0
     currentTime = 0.0
+
+    smoothening = 3
+    prevLocX, prevLocY = 0, 0
+    curLocX, curLocY = 0, 0
+
     mouse = Controller()
     root = Tk()
     detect = hand_tracker.detector()
@@ -49,21 +55,20 @@ def mouseController(
         if len(landmarks) != 0:
             fingerState = openOrClosed(handedness[0], landmarks)
             x1, y1 = landmarks[8][1], landmarks[8][2]
-            # x2, y2 = landmarks[4][1], landmarks[4][2]
+            cv2.rectangle(
+                image,
+                (int(frameReduction), int(frameReduction)),
+                (
+                    int(camWidth - frameReduction),
+                    int(camHeight - frameReduction),
+                ),
+                (255, 0, 255),
+                1,
+            )
             if fingerState == [0, 1, 0, 0, 0]:
                 width, height = (
                     root.winfo_screenwidth(),
                     root.winfo_screenheight(),
-                )
-                cv2.rectangle(
-                    image,
-                    (int(frameReduction), int(frameReduction)),
-                    (
-                        int(camWidth - frameReduction),
-                        int(camHeight - frameReduction),
-                    ),
-                    (255, 0, 255),
-                    1,
                 )
                 x3 = np.interp(
                     x1, (frameReduction, camWidth - frameReduction), (0, width)
@@ -74,8 +79,19 @@ def mouseController(
                     (0, height),
                 )
                 mouse.position = (0, 0)
-                cv2.circle(image, (x1, y1), 5, (255, 0, 255), cv2.FILLED)
-                mouse.move(x3, y3)
+                cv2.circle(image, (x1, y1), 10, (255, 0, 255), cv2.FILLED)
+                curLocX = prevLocX + (x3 - prevLocX) / smoothening
+                curLocY = prevLocY + (y3 - prevLocY) / smoothening
+                mouse.move(curLocX, curLocY)
+                prevLocX, prevLocY = curLocX, curLocY
+
+            if fingerState == [1, 1, 1, 1, 1]:
+                length, cx, cy = findDistance(4, 8, landmarks)
+                cv2.circle(image, (cx, cy), 5, (0, 255, 0), cv2.FILLED)
+                if length < 25:
+                    cv2.circle(image, (cx, cy), 10, (0, 0, 255), cv2.FILLED)
+                    mouse.press(Button.left)
+                    mouse.release(Button.left)
 
         currentTime = time.time()
         fps = 1 / (currentTime - previousTime)

@@ -1,8 +1,7 @@
-import math
-
 import cv2
 import numpy.typing as nt
 
+from src.components.helpers.distance import findDistance
 from src.components.helpers.hand_state import openOrClosed
 from src.components.helpers.volume_manager import manageVol
 
@@ -32,11 +31,9 @@ def controlVolume(
         NDArray: An NDarray of the image stream. Optionally supports drawing
         on the image if draw is set to True.
     """
+    length, cx, cy = findDistance(4, 8, landmarks)
     x1, y1 = landmarks[4][1], landmarks[4][2]
     x2, y2 = landmarks[8][1], landmarks[8][2]
-
-    cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
-    length = math.hypot(x2 - x1, y2 - y1)
     fingerState = openOrClosed(handedness[0], landmarks)
     if fingerState[2] and fingerState[3] and fingerState[4] == 1:
         if draw:
