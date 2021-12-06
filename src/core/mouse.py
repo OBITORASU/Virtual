@@ -85,7 +85,7 @@ def mouseController(
                 mouse.move(curLocX, curLocY)
                 prevLocX, prevLocY = curLocX, curLocY
 
-            if fingerState == [1, 1, 1, 1, 1]:
+            if fingerState[2] and fingerState[3] and fingerState[4] == 1:
                 length, cx, cy = findDistance(4, 8, landmarks)
                 cv2.circle(image, (cx, cy), 5, (0, 255, 0), cv2.FILLED)
                 if length < 25:
