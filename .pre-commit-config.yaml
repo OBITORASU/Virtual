@@ -33,4 +33,4 @@ repos:
     rev: 4.0.1
     hooks:
       - id: flake8
-        args: ["--ignore", "E203, E266, W503, F403", "--max-complexity", "15"]
+        args: ["--ignore", "E203, E266, W503, F403", "--max-complexity", "30"]
