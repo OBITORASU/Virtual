@@ -88,10 +88,19 @@ def mouseController(
             if fingerState[2] and fingerState[3] and fingerState[4] == 1:
                 length, cx, cy = findDistance(4, 8, landmarks)
                 cv2.circle(image, (cx, cy), 5, (0, 255, 0), cv2.FILLED)
+
                 if length < 25:
                     cv2.circle(image, (cx, cy), 10, (0, 0, 255), cv2.FILLED)
                     mouse.press(Button.left)
                     mouse.release(Button.left)
+
+            elif fingerState[1] and fingerState[3] and fingerState[4] == 1:
+                length, cx, cy = findDistance(8, 12, landmarks)
+                cv2.circle(image, (cx, cy), 5, (0, 255, 0), cv2.FILLED)
+                if length < 25:
+                    cv2.circle(image, (cx, cy), 10, (0, 0, 255), cv2.FILLED)
+                    mouse.press(Button.right)
+                    mouse.release(Button.right)
 
         currentTime = time.time()
         fps = 1 / (currentTime - previousTime)
